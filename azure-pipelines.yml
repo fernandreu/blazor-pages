@@ -1,0 +1,46 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- group: GitHubPATGroup
+- name: buildConfiguration
+  value: 'Release'
+
+steps:
+- task: DotNetCoreInstaller@0
+  displayName: Install Latest .NET Core 3.0 SDK
+  inputs:
+    packageType: 'sdk'
+    version: '3.0.100-preview5-011568'
+
+- task: DotNetCoreCLI@2
+  displayName: Publish App
+  inputs:
+    command: publish
+    # Important: If you zip the publish, the GitHub Pages script will need to unzip it first
+    zipAfterPublish: false
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifacts'
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)/Client
+    artifactName: 'Dist'
+
+- script: |
+    git config --global user.name "$NAME"
+    git config --global user.email "$EMAIL"
+    cd $(Build.ArtifactStagingDirectory)/Client/Client/dist
+    git init
+    git checkout -b gh-pages
+    git add -A
+    git commit -m "Create build $(Build.BuildId)"
+    git push -f https://$PAT@github.com/fernandreu/blazor-pages.git gh-pages
+  displayName: 'Publish to GitHub Pages'
+  env:
+    PAT: $(GitHubPAT)
+    NAME: $(GitHubName)
+    EMAIL: $(GitHubEmail)
