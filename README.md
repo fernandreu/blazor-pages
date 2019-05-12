@@ -16,7 +16,8 @@ This project goes one step ahead by:
 
 - providing the full solution from where the pages are built;
 - showing the use of an auxiliary [Shared](src/Shared) project which could be re-used in
-  the ASP.NET Core server; and
+  the ASP.NET Core server (similarly to how the combined client- and server-side Blazor
+  template does); and
 - automating the entire build and deployment to GitHub Pages.
 
 
