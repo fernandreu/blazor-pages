@@ -10,8 +10,14 @@ https://fernando.andreu.info/blazor-pages/
 Microsoft Docs already contains a [general overview](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/client-side?view=aspnetcore-3.0#github-pages)
 of the steps needed for a successful deploy, including an example of the final result 
 ([repository](https://github.com/blazor-demo/blazor-demo.github.io) / [live site](https://blazor-demo.github.io/)).
-This project goes one step ahead by showing the project files from where the pages are built, 
-as well as how to automate the entire deployment.
+
+
+This project goes one step ahead by:
+
+- providing the full solution from where the pages are built;
+- showing the use of an auxiliary [Shared](src/Shared) project which could be re-used in
+  the ASP.NET Core server; and
+- automating the entire build and deployment to GitHub Pages.
 
 
 ## How it works
