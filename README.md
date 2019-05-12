@@ -31,18 +31,18 @@ changed in your project settings).
 
 ## How to use this for your own project
 
-The `<base>` url in [`index.html`](Client/wwwroot/index.html) will need to be modified 
+The `<base>` url in [`index.html`](src/Client/wwwroot/index.html) will need to be modified 
 depending on where the project is deployed. If deploying on the root level, set 
-`segmentCount = 0` in [`404.html`](Client/wwwroot/404.html) as well.
+`segmentCount = 0` in [`404.html`](src/Client/wwwroot/404.html) as well.
 
 When testing on localhost, the `applicationUrl` for IIS Express in 
-[`launchSettings.json`](Client/Properties/launchSettings.json) will need to be updated to 
-reflect the same base url as in [`index.html`](Client/wwwroot/index.html).
+[`launchSettings.json`](src/Client/Properties/launchSettings.json) will need to be updated to 
+reflect the same base url as in [`index.html`](src/Client/wwwroot/index.html).
 
 Paths in the [Azure Pipelines yaml file](azure-pipelines.yml) will need to be updated accordingly.
 
-*The presence of the `.nojekyll` file in `wwwroot` can be [quite important](
-https://help.github.com/en/articles/files-that-start-with-an-underscore-are-missing).*
+*The presence of the [`.nojekyll`](src/Client/wwwroot/.nojekyll) file in `wwwroot` can be 
+[quite important](https://help.github.com/en/articles/files-that-start-with-an-underscore-are-missing).*
 
 
 ## CI / CD
