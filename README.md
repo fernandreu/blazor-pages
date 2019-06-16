@@ -24,7 +24,7 @@ This project goes one step ahead by:
 ## How it works
 
 The Azure pipeline first performs a normal `dotnet publish` of the app, which will generate
-a `dist` bundle ready to be deployed. This bundle is then force pushed into the `gh-pages`,
+a `dist` bundle ready to be deployed. This bundle is then force pushed into the `gh-pages`
 branch, which is the standard branch name used when deploying to GitHub Pages (this can be
 changed in your project settings). 
 
