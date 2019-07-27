@@ -16,32 +16,33 @@ This project goes one step ahead by:
 
 - providing the full solution from where the pages are built;
 - showing the use of an auxiliary [Shared](src/Shared) project which could be re-used in
-  the ASP.NET Core server; and
+  the ASP.NET Core server (similarly to how the combined client- and server-side Blazor
+  template does); and
 - automating the entire build and deployment to GitHub Pages.
 
 
 ## How it works
 
 The Azure pipeline first performs a normal `dotnet publish` of the app, which will generate
-a `dist` bundle ready to be deployed. This bundle is then force pushed into the `gh-pages`,
+a `dist` bundle ready to be deployed. This bundle is then force pushed into the `gh-pages`
 branch, which is the standard branch name used when deploying to GitHub Pages (this can be
 changed in your project settings). 
 
 
 ## How to use this for your own project
 
-The `<base>` url in [`index.html`](Client/wwwroot/index.html) will need to be modified 
+The `<base>` url in [`index.html`](src/Client/wwwroot/index.html) will need to be modified 
 depending on where the project is deployed. If deploying on the root level, set 
-`segmentCount = 0` in [`404.html`](Client/wwwroot/404.html) as well.
+`segmentCount = 0` in [`404.html`](src/Client/wwwroot/404.html) as well.
 
 When testing on localhost, the `applicationUrl` for IIS Express in 
-[`launchSettings.json`](Client/Properties/launchSettings.json) will need to be updated to 
-reflect the same base url as in [`index.html`](Client/wwwroot/index.html).
+[`launchSettings.json`](src/Client/Properties/launchSettings.json) will need to be updated to 
+reflect the same base url as in [`index.html`](src/Client/wwwroot/index.html).
 
 Paths in the [Azure Pipelines yaml file](azure-pipelines.yml) will need to be updated accordingly.
 
-*The presence of the `.nojekyll` file in `wwwroot` can be [quite important](
-https://help.github.com/en/articles/files-that-start-with-an-underscore-are-missing).*
+*The presence of the [`.nojekyll`](src/Client/wwwroot/.nojekyll) file in `wwwroot` can be 
+[quite important](https://help.github.com/en/articles/files-that-start-with-an-underscore-are-missing).*
 
 
 ## CI / CD
