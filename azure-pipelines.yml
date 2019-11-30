@@ -10,7 +10,7 @@ variables:
   value: 'Release'
 
 steps:
-- task: DotNetCoreInstaller@0
+- task: UseDotNet@2
   displayName: Install Latest .NET Core 3.1 SDK
   inputs:
     packageType: 'sdk'
