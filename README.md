@@ -2,7 +2,7 @@
 
 [![Build Status](https://dev.azure.com/fernandreu-public/BlazorPages/_apis/build/status/fernandreu.blazor-pages?branchName=master)](https://dev.azure.com/fernandreu-public/BlazorPages/_build/latest?definitionId=6?branchName=master)
 
-This project is an example of using Azure Pipelines to automatically deploy a client-side
+This project is an example of using Azure Pipelines / GitHub Actions to automatically deploy a client-side
 Blazor app to Github Pages. For a live demo, check the following link:
 
 https://fernando.andreu.info/blazor-pages/
@@ -23,11 +23,19 @@ This project goes one step ahead by:
 
 ## How it works
 
-The Azure pipeline first performs a normal `dotnet publish` of the app, which will generate
-a `dist` bundle ready to be deployed. This bundle is then force pushed into the `gh-pages`
-branch, which is the standard branch name used when deploying to GitHub Pages (this can be
-changed in your project settings). 
+The CI pipelines first perform a normal `dotnet publish` of the app, which will generate
+a `dist` bundle ready to be deployed. This bundle is then pushed differently depending on
+the CI environment:
 
+- Azure Pipelines: the bundle is force pushed to `gh-pages-from-azure` by using raw Git
+commands
+- GitHub Actions: an already existing [task](https://github.com/marketplace/actions/deploy-to-github-pages)
+is used to push the bundle to `gh-pages-from-actions`
+    
+For your project, you are probably only interested in either Azure Pipelines or GitHub 
+Actions, but not both. In that case, `gh-pages` would be the a more suitable name for the
+deployment branch, as it is the standard name used for GitHub Pages (this can be changed
+in your project settings).
 
 ## How to use this for your own project
 
@@ -39,7 +47,8 @@ When testing on localhost, the `applicationUrl` for IIS Express in
 [`launchSettings.json`](src/Client/Properties/launchSettings.json) will need to be updated to 
 reflect the same base url as in [`index.html`](src/Client/wwwroot/index.html).
 
-Paths in the [Azure Pipelines yaml file](azure-pipelines.yml) will need to be updated accordingly.
+Paths in the [Azure Pipelines yaml file](azure-pipelines.yml) / [GitHub Actions workflow](.github/workflows/gh-pages.yml)
+may need to be updated accordingly.
 
 *The presence of the [`.nojekyll`](src/Client/wwwroot/.nojekyll) file in `wwwroot` can be 
 [quite important](https://help.github.com/en/articles/files-that-start-with-an-underscore-are-missing).*
@@ -53,3 +62,5 @@ should contain the following three variables:
 - `GitHubPAT`: A Personal Access Token with sufficient permission to (force) push to the `gh-pages` branch
 - `GitHubName`: The name of the user committing to the `gh-pages` branch
 - `GitHubEmail`: The email of the user committing to the `gh-pages` branch
+
+In the case of GitHub Actions, only a single secret is needed: `ACCESS_TOKEN`, equivalent to `GitHubPAT` above. 
