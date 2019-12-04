@@ -29,7 +29,7 @@ the CI environment:
 
 - Azure Pipelines: the bundle is force pushed to `gh-pages-from-azure` by using raw Git
 commands
-- GitHub Actions: an already existing [task](https://github.com/marketplace/actions/deploy-to-github-pages)
+- GitHub Actions: an already existing [action](https://github.com/marketplace/actions/deploy-to-github-pages)
 is used to push the bundle to `gh-pages-from-actions`
     
 For your project, you are probably only interested in either Azure Pipelines or GitHub 
