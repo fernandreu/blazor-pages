@@ -59,8 +59,11 @@ may need to be updated accordingly.
 The Azure pipeline is expecting access to one variable group named `GitHubPATGroup`, which
 should contain the following three variables:
 
-- `GitHubPAT`: A Personal Access Token with sufficient permission to (force) push to the `gh-pages` branch
-- `GitHubName`: The name of the user committing to the `gh-pages` branch
-- `GitHubEmail`: The email of the user committing to the `gh-pages` branch
+- `GitHubPAT`: A Personal Access Token with sufficient permission to (force) push to the `gh-pages-from-azure` branch
+- `GitHubName`: The name of the user committing to the `gh-pages-from-azure` branch
+- `GitHubEmail`: The email of the user committing to the `gh-pages-from-azure` branch
+
+The `gh-pages-from-azure` branch **must** exist already for the deployment to be successful (this
+is a temporary limitation in the pipeline configuration).
 
 In the case of GitHub Actions, only a single secret is needed: `ACCESS_TOKEN`, equivalent to `GitHubPAT` above. 
