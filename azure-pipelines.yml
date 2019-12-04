@@ -38,7 +38,7 @@ steps:
     git checkout -b gh-pages
     git add -A
     git commit -m "Create build $(Build.BuildId)"
-    git push -f https://$PAT@github.com/fernandreu/blazor-pages.git gh-pages
+    git push -f https://$PAT@github.com/fernandreu/blazor-pages.git gh-pages-from-azure
   displayName: 'Publish to GitHub Pages'
   env:
     PAT: $(GitHubPAT)
