@@ -29,15 +29,12 @@ The CI pipelines first perform a normal `dotnet publish` of the app, which will 
 a `dist` bundle ready to be deployed. This bundle is then pushed differently depending on
 the CI environment:
 
-- Azure Pipelines: the bundle is force pushed to `gh-pages-from-azure` by using raw Git
+- Azure Pipelines: the bundle is force pushed to `gh-pages` by using raw Git
 commands
 - GitHub Actions: an already existing [action](https://github.com/marketplace/actions/deploy-to-github-pages)
-is used to push the bundle to `gh-pages-from-actions`
-    
-For your project, you are probably only interested in either Azure Pipelines or GitHub 
-Actions, but not both. In that case, `gh-pages` would be the a more suitable name for the
-deployment branch, as it is the standard name used for GitHub Pages (this can be changed
-in your project settings).
+is used to push the bundle to `gh-pages-from-actions` (this will need to be renamed to
+`gh-pages` to host your website from this branch)
+
 
 ## How to use this for your own project
 
@@ -61,11 +58,11 @@ may need to be updated accordingly.
 The Azure pipeline is expecting access to one variable group named `GitHubPATGroup`, which
 should contain the following three variables:
 
-- `GitHubPAT`: A Personal Access Token with sufficient permission to (force) push to the `gh-pages-from-azure` branch
-- `GitHubName`: The name of the user committing to the `gh-pages-from-azure` branch
-- `GitHubEmail`: The email of the user committing to the `gh-pages-from-azure` branch
+- `GitHubPAT`: A Personal Access Token with sufficient permission to (force) push to the `gh-pages` branch
+- `GitHubName`: The name of the user committing to the `gh-pages` branch
+- `GitHubEmail`: The email of the user committing to the `gh-pages` branch
 
-The `gh-pages-from-azure` branch **must** exist already for the deployment to be successful (this
+The `gh-pages` branch **must** exist already for the deployment to be successful (this
 is a temporary limitation in the pipeline configuration).
 
 In the case of GitHub Actions, only a single secret is needed: `ACCESS_TOKEN`, equivalent to `GitHubPAT` above. 
