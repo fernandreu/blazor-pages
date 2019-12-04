@@ -1,6 +1,8 @@
 # Blazor Pages
 
-[![Build Status](https://dev.azure.com/fernandreu-public/BlazorPages/_apis/build/status/fernandreu.blazor-pages?branchName=master)](https://dev.azure.com/fernandreu-public/BlazorPages/_build/latest?definitionId=6?branchName=master)
+[![Azure Status](https://dev.azure.com/fernandreu-public/BlazorPages/_apis/build/status/fernandreu.blazor-pages?branchName=master)](https://dev.azure.com/fernandreu-public/BlazorPages/_build/latest?definitionId=6?branchName=master)
+[![Actions Status](https://github.com/fernandreu/blazor-pages/workflows/gh-pages/badge.svg)](https://github.com/fernandreu/blazor-pages/actions)
+
 
 This project is an example of using Azure Pipelines / GitHub Actions to automatically deploy a client-side
 Blazor app to Github Pages. For a live demo, check the following link:
