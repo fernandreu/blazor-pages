@@ -35,7 +35,7 @@ steps:
     git config --global user.email "$EMAIL"
     cd $(Build.ArtifactStagingDirectory)/Client/Client/dist
     git init
-    git checkout -b gh-pages
+    git checkout -b gh-pages-from-azure
     git add -A
     git commit -m "Create build $(Build.BuildId)"
     git push -f https://$PAT@github.com/fernandreu/blazor-pages.git gh-pages-from-azure
