@@ -1,4 +1,4 @@
-name: .NET Core
+name: Deploy to GitHub Pages
 
 on: [push]
 
@@ -21,4 +21,4 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BASE_BRANCH: master # The branch the action should deploy from.
         BRANCH: gh-pages-from-actions # The branch the action should deploy to.
-        FOLDER: build/Client/Dist # The folder the action should deploy.
+        FOLDER: build/Client/dist # The folder the action should deploy.
