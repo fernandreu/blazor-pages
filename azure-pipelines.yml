@@ -33,7 +33,7 @@ steps:
 - script: |
     git config --global user.name "$NAME"
     git config --global user.email "$EMAIL"
-    cd $(Build.ArtifactStagingDirectory)/Client/Client/dist
+    cd $(Build.ArtifactStagingDirectory)/Client/Dist/wwwroot
     git init
     git checkout -b gh-pages
     git add -A
