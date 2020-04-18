@@ -21,5 +21,5 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BASE_BRANCH: master # The branch the action should deploy from.
         BRANCH: gh-pages-from-actions # The branch the action should deploy to.
-        FOLDER: build/Client/dist # The folder the action should deploy.
+        FOLDER: build/wwwroot # The folder the action should deploy.
         CLEAN: true
