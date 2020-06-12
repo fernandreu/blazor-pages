@@ -65,4 +65,4 @@ should contain the following three variables:
 The `gh-pages` branch **must** exist already for the deployment to be successful (this
 is a temporary limitation in the pipeline configuration).
 
-In the case of GitHub Actions, only a single secret is needed: `ACCESS_TOKEN`, equivalent to `GitHubPAT` above. 
+In the case of GitHub Actions, only a single secret is needed: `ACCESS_TOKEN`, equivalent to `GitHubPAT` above. An example of a full deployment using GitHub Actions can also be found in my [blazor-fractals](https://github.com/fernandreu/blazor-fractals) repository.
